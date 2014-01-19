@@ -22,6 +22,9 @@ var data = {
 exports.posts = function (req, res) {
   var posts = [];
   data.posts.forEach(function (post, i) {
+    console.log(post);
+  // var _text = post.text;
+  // if(_text != undefined)
     posts.push({
       id: i,
       title: post.title,
@@ -47,6 +50,7 @@ exports.post = function (req, res) {
 // POST
 
 exports.addPost = function (req, res) {
+  console.log(req.body);
   data.posts.push(req.body);
   res.json(req.body);
 };

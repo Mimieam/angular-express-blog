@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html ng-app="demo">
+
+<head>
+  <style>
+    a {
+      font-size: 300%;
+    }
+    .highlight-enter {
+      -webkit-animation: highlight 1s cubic-bezier(0.1, 1.0, 0.7, 0.2) infinite alternate;
+      animation: highlight 1s cubic-bezier(0.1, 1.0, 0.7, 0.2) infinite alternate;
+    }
+    @-webkit-keyframes highlight {
+      from {
+        background: #f80;
+        padding-left: 100%;
+      }
+      to {
+        background: #80f;
+        padding-left: 0;
+      }
+    }
+    @keyframes highlight {
+      from {
+        background: #f80;
+        padding-left: 100%;
+      }
+      to {
+        background: #80f;
+        padding-left: 0;
+      }
+    }
+  </style>
+
+  <script data-require="angular.js@1.1.5" data-semver="1.1.5" src="http://code.angularjs.org/1.1.5/angular.min.js"></script>
+  <script>
+    angular.module('demo', []).controller('MainCtrl', function($scope) {
+      $scope.items = [{
+        name: 'Squidward'
+      },{
+        name: 'Plankton'
+      }];
+
+      $scope.add = function() {
+        $scope.items.push({
+          name: 'Patrick'
+        });
+      };
+    });
+  </script>
+</head>
+
+<body ng-controller="MainCtrl">
+  <div>
+    <button ng-click="add()">Add More Patrick</button>
+    <ul>
+      <li ng-repeat="item in items" ng-animate="'highlight'">
+        <a>{{item.name}}</a>
+      </li>
+    </ul>
+  </div>
+</body>
+
+</html>
